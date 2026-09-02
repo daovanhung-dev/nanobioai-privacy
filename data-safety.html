@@ -1,0 +1,125 @@
+    <!doctype html>
+    <html lang="vi">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Bản đồ kỹ thuật các nhóm dữ liệu, quyền Android và nhà cung cấp liên quan để hỗ trợ khai báo Google Play.">
+      <meta name="theme-color" content="#0b63f6">
+      <title>Dữ liệu & Google Play Data Safety | NanoBio</title>
+      <link rel="stylesheet" href="assets/css/styles.css">
+    </head>
+    <body data-page="data-safety.html">
+      <a class="skip-link" href="#main">Bỏ qua điều hướng</a>
+      <header class="site-header">
+        <div class="shell header-inner">
+          <a class="brand" href="index.html" aria-label="NanoBio Trust Center">
+            <span class="brand-mark" aria-hidden="true">N</span>
+            <span><strong>NanoBio</strong><small>Trust Center</small></span>
+          </a>
+          <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+          <nav id="site-nav" class="site-nav" aria-label="Điều hướng chính"><a class="nav-link" href="index.html" data-page="index.html">Tổng quan</a><a class="nav-link" href="privacy-policy.html" data-page="privacy-policy.html">Quyền riêng tư</a><a class="nav-link" href="data-safety.html" data-page="data-safety.html">Dữ liệu</a><a class="nav-link" href="terms-of-service.html" data-page="terms-of-service.html">Điều khoản</a><a class="nav-link" href="account-deletion.html" data-page="account-deletion.html">Xóa tài khoản</a><a class="nav-link" href="health-ai-disclaimer.html" data-page="health-ai-disclaimer.html">Sức khỏe & AI</a><a class="nav-link" href="cookie-policy.html" data-page="cookie-policy.html">Cookie</a></nav>
+        </div>
+      </header>
+      <main id="main">
+        <section class="hero compact">
+          <div class="shell">
+            <div class="eyebrow">Data Transparency</div>
+            <h1>Dữ liệu & Google Play Data Safety</h1>
+            <p class="lead">Bản đồ kỹ thuật các nhóm dữ liệu, quyền Android và nhà cung cấp liên quan để hỗ trợ khai báo Google Play.</p>
+            <div class="meta-row"><span>Ứng dụng: <strong>NanoBio</strong></span><span>Package: <code>com.nanobioai.app</code></span><span>Cập nhật: 02/09/2026</span></div>
+          </div>
+        </section>
+        <div class="shell content-grid">
+          <article class="policy-card">
+            <section class="callout warn">
+  <h2>Quan trọng trước khi khai Play Console</h2>
+  <p>Đây là <strong>bản đồ dữ liệu kỹ thuật</strong> dựa trên source NanoBioAI hiện tại, không phải bản tự động nộp thay Data safety form. Google định nghĩa “collected”, “shared”, xử lý tạm thời và service provider theo tiêu chí riêng. Trước mỗi bản AAB phát hành, cần đối chiếu lại runtime và câu hỏi cụ thể trong Play Console.</p>
+</section>
+<section>
+  <h2>1. Ma trận dữ liệu</h2>
+  <div class="table-wrap"><table class="data-table">
+    <thead><tr><th>Nhóm dữ liệu</th><th>Khi nào</th><th>Mục đích chính</th><th>Nơi/bên xử lý</th><th>Tính bắt buộc</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Thông tin cá nhân</strong><br>Email, tên, user ID</td><td>Khi tạo/đăng nhập tài khoản</td><td>Auth, profile, cloud sync</td><td>Supabase</td><td>Tùy chọn với guest; cần cho account/cloud</td></tr>
+      <tr><td><strong>Thông tin xác thực</strong><br>Session/token</td><td>Khi đăng nhập</td><td>Duy trì phiên, gọi endpoint bảo vệ</td><td>Thiết bị + Supabase</td><td>Cần cho phiên đăng nhập</td></tr>
+      <tr><td><strong>Sức khỏe & thể chất</strong><br>Health profile, metrics/history, training, incidents</td><td>Khi người dùng nhập/theo dõi</td><td>Cá nhân hóa và theo dõi sức khỏe</td><td>SQLite; Supabase khi sync</td><td>Theo tính năng</td></tr>
+      <tr><td><strong>Dinh dưỡng</strong><br>Meal, meal plan, nutrition analysis</td><td>Khi dùng kế hoạch ăn/Food Scan</td><td>Gợi ý dinh dưỡng</td><td>Local/Supabase; Gemini cho scan</td><td>Theo tính năng</td></tr>
+      <tr><td><strong>Thuốc & tình trạng sức khỏe</strong><br>Medication, condition</td><td>Khi người dùng khai báo</td><td>Nhắc lịch/theo dõi</td><td>Local/Supabase khi sync</td><td>Theo tính năng</td></tr>
+      <tr><td><strong>Thai kỳ / người cao tuổi</strong></td><td>Khi dùng module tương ứng</td><td>Theo dõi chuyên biệt</td><td>Local/Supabase khi sync</td><td>Theo tính năng</td></tr>
+      <tr><td><strong>Nhịn ăn / bài thở</strong></td><td>Khi bắt đầu phiên</td><td>Theo dõi wellness</td><td>Local/Supabase khi sync</td><td>Theo tính năng</td></tr>
+      <tr><td><strong>Nội dung AI</strong><br>Prompt, câu hỏi, context cần thiết</td><td>Khi dùng chat/tạo kế hoạch/AI</td><td>Tạo kết quả AI</td><td>Supabase Edge Function + Google Gemini</td><td>Theo tính năng</td></tr>
+      <tr><td><strong>Ảnh</strong><br>Ảnh món ăn</td><td>Khi người dùng dùng Food Scan</td><td>Phân tích món ăn</td><td>Backend + Google Gemini</td><td>Tùy chọn</td></tr>
+      <tr><td><strong>Âm thanh / microphone</strong></td><td>Voice hoặc Sleep Safety đang chạy</td><td>Nhận dạng/giám sát tín hiệu</td><td>Thiết bị/OS; Sleep Safety capture hiện tại xử lý PCM trong RAM</td><td>Tùy chọn theo tính năng</td></tr>
+      <tr><td><strong>Liên hệ do người dùng nhập</strong><br>Tên + số điện thoại liên hệ khẩn cấp</td><td>Khi cấu hình Sleep Safety</td><td>Xác minh và gửi cảnh báo</td><td>Supabase + Twilio khi dispatch</td><td>Tùy chọn</td></tr>
+      <tr><td><strong>Hoạt động ứng dụng</strong><br>Task completion, action event, lịch sử</td><td>Khi dùng lịch trình/nhắc việc</td><td>Tính tiến độ, đồng bộ trạng thái</td><td>Local/Supabase khi sync</td><td>Phát sinh từ tính năng</td></tr>
+      <tr><td><strong>Thông báo/reminder metadata</strong></td><td>Khi bật nhắc lịch</td><td>Lên lịch và xử lý action</td><td>Thiết bị; có thể sync Supabase</td><td>Tùy chọn theo tính năng</td></tr>
+      <tr><td><strong>Thông tin thiết bị/app</strong><br>Platform, app version, fingerprint băm</td><td>Khi auth/backend cần</td><td>Bảo mật, tương thích, chẩn đoán</td><td>Thiết bị + backend</td><td>Kỹ thuật</td></tr>
+      <tr><td><strong>Giao dịch/đăng ký</strong><br>Product/purchase verification metadata</td><td>Khi mua/khôi phục gói</td><td>Xác minh membership/quyền lợi</td><td>Google Play + backend</td><td>Chỉ với giao dịch</td></tr>
+      <tr><td><strong>Proof file</strong><br>Tệp bằng chứng hoàn thành lịch nếu tính năng tạo</td><td>Khi người dùng tạo/upload</td><td>Ghi nhận hoàn thành</td><td>Supabase Storage</td><td>Tùy chọn</td></tr>
+    </tbody>
+  </table></div>
+</section>
+<section>
+  <h2>2. Các nhà cung cấp/điểm chuyển dữ liệu đã xác minh</h2>
+  <ul>
+    <li><strong>Supabase:</strong> xác thực, database, storage, cloud sync và Edge Functions.</li>
+    <li><strong>Google Gemini:</strong> backend AI cho prompt và ảnh Food Scan.</li>
+    <li><strong>Google Play:</strong> mua hàng trong ứng dụng/đăng ký và xác minh quyền lợi.</li>
+    <li><strong>Twilio:</strong> SMS/cuộc gọi Sleep Safety khi người dùng cấu hình và tính năng được kích hoạt.</li>
+    <li><strong>Dịch vụ hệ điều hành:</strong> speech recognition, TTS, biometric và notification theo cài đặt thiết bị.</li>
+  </ul>
+</section>
+<section>
+  <h2>3. Mapping quyền Android → mục đích</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Quyền</th><th>Mục đích trong app</th><th>Ghi chú khai báo</th></tr></thead>
+    <tbody>
+      <tr><td><code>INTERNET</code>, <code>ACCESS_NETWORK_STATE</code></td><td>Backend, auth, AI, cloud sync</td><td>Không phải runtime consent nhưng liên quan data transfer</td></tr>
+      <tr><td><code>CAMERA</code></td><td>Luồng dùng hình ảnh như Food Scan</td><td>Dữ liệu camera là sensitive; disclosure phải khớp runtime</td></tr>
+      <tr><td><code>RECORD_AUDIO</code></td><td>Voice, Sleep Safety</td><td>Runtime permission; cần disclosure đúng thời điểm</td></tr>
+      <tr><td><code>FOREGROUND_SERVICE_MICROPHONE</code></td><td>Sleep Safety do người dùng bắt đầu</td><td>Foreground service microphone</td></tr>
+      <tr><td><code>USE_BIOMETRIC</code>, <code>USE_FINGERPRINT</code></td><td>Xác thực cục bộ khi dùng</td><td>Không đồng nghĩa app nhận template sinh trắc học</td></tr>
+      <tr><td><code>POST_NOTIFICATIONS</code></td><td>Nhắc lịch/cảnh báo</td><td>Runtime permission trên Android mới</td></tr>
+      <tr><td><code>SCHEDULE_EXACT_ALARM</code>, <code>RECEIVE_BOOT_COMPLETED</code>, <code>VIBRATE</code></td><td>Duy trì reminder chính xác và sau reboot</td><td>Chỉ nên giữ nếu bản phát hành thực sự cần</td></tr>
+    </tbody>
+  </table></div>
+</section>
+<section>
+  <h2>4. Checklist Data Safety trước khi submit AAB</h2>
+  <ol>
+    <li>Build đúng commit/AAB dự định phát hành và kiểm tra manifest merged.</li>
+    <li>Đối chiếu từng category ở bảng trên với câu hỏi hiện hành trong Play Console.</li>
+    <li>Xác định dữ liệu nào thực sự rời thiết bị, dữ liệu nào chỉ xử lý tạm thời và dữ liệu nào sync theo opt-in.</li>
+    <li>Xác nhận từng bên thứ ba được xem là “service provider” hay “sharing” theo định nghĩa Google tại thời điểm khai.</li>
+    <li>Đảm bảo privacy policy trong app và URL Play Console cùng một nội dung thực tế.</li>
+    <li>Đảm bảo quyền camera/microphone có prominent disclosure và consent trước khi thu thập dữ liệu nhạy cảm ngoài kỳ vọng hợp lý của người dùng.</li>
+    <li>Hoàn tất Health apps declaration vì NanoBio có tính năng sức khỏe.</li>
+    <li>Nhập URL xóa tài khoản ngoài app: <code>https://daovanhung-dev.github.io/nanobioai-privacy/account-deletion.html</code>.</li>
+  </ol>
+</section>
+<section class="note">
+  <h2>Không suy diễn từ permission</h2>
+  <p>Một permission xuất hiện trong manifest không tự động có nghĩa dữ liệu tương ứng được lưu hoặc chia sẻ. Ví dụ, Sleep Safety hiện capture PCM trong RAM; còn biometric API không cung cấp mẫu vân tay/khuôn mặt thô cho ứng dụng. Data Safety phải dựa trên hành vi runtime của bản phát hành.</p>
+</section>
+
+          </article>
+          <aside class="side-card" aria-label="Liên kết nhanh">
+            <h2>Liên kết nhanh</h2>
+            <a href="privacy-policy.html">Chính sách quyền riêng tư</a>
+            <a href="account-deletion.html">Yêu cầu xóa tài khoản</a>
+            <a href="data-safety.html">Bản đồ dữ liệu</a>
+            <a href="health-ai-disclaimer.html">Lưu ý sức khỏe & AI</a>
+            <a href="mailto:Daohungmt2005@gmail.com">Liên hệ quyền riêng tư</a>
+            <div class="note small"><strong>Lưu ý:</strong> Các trang này mô tả bản build/source được đối chiếu tại ngày cập nhật. Khi tính năng hoặc nhà cung cấp thay đổi, tài liệu cần được cập nhật tương ứng.</div>
+          </aside>
+        </div>
+      </main>
+      <footer class="site-footer">
+        <div class="shell footer-inner">
+          <div><strong>NanoBio</strong> · Trợ lý sức khỏe AI</div>
+          <div><a href="mailto:Daohungmt2005@gmail.com">Daohungmt2005@gmail.com</a> · <a href="https://github.com/daovanhung-dev" rel="noopener noreferrer">GitHub nhà phát triển</a></div>
+        </div>
+      </footer>
+      <script src="assets/js/main.js" defer></script>
+    </body>
+    </html>
